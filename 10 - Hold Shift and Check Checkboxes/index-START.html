@@ -106,14 +106,17 @@ let lastChecked;
 
 function handleCheck(e) {
   let inBetween = false;
-
+  console.log(this);
   if(e.shiftKey && this.checked) {
-    checkboxes.forEach(checkbox);
-    if(checkbox === this || checkbox === lastChecked) {
-      inBetween = !inBetween;
-    }
+    checkboxes.forEach(checkbox => {
+      if(checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+      }
+      if(inBetween) {
+        checkbox.checked = true;
+      }
+    });
   }
-// console.log(e);
   lastChecked = this;
 }
 
